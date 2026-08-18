@@ -1,0 +1,9 @@
+venv/
+.venv/
+*.json
+*.csv
+.env
+aws_credentials*
+kaggle.json
+__pycache__/
+.DS_Store
