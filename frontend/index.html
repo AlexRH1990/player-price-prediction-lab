@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detector de Gangas | ML Scout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-gray-100 min-h-screen p-8">
+
+    <div class="max-w-4xl mx-auto">
+        <!-- Encabezado -->
+        <header class="text-center mb-10">
+            <h1 class="text-4xl font-bold text-blue-400 mb-2">⚽ ML Scout: Detector de Gangas</h1>
+            <p class="text-slate-400">Valuación de jugadores basada en rendimiento (Powered by XGBoost)</p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Panel Izquierdo: Formulario -->
+            <div class="bg-slate-800 p-6 rounded-lg shadow-lg border border-slate-700">
+                <h2 class="text-xl font-semibold mb-4 border-b border-slate-600 pb-2">Ingresar Estadísticas</h2>
+                
+                <form id="prediction-form" class="space-y-4">
+                    <div>
+                        <label class="block text-sm text-slate-400 mb-1">Posición</label>
+                        <select id="posicion" class="w-full bg-slate-700 border border-slate-600 rounded p-2 text-white focus:outline-none focus:border-blue-500">
+                            <option value="Attack">Delantero (Attack)</option>
+                            <option value="Midfield">Mediocampista (Midfield)</option>
+                            <option value="Defender">Defensa (Defender)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm text-slate-400 mb-1">Edad</label>
+                            <input type="number" id="edad" step="0.1" class="w-full bg-slate-700 border border-slate-600 rounded p-2 text-white focus:outline-none focus:border-blue-500" placeholder="Ej. 24" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-slate-400 mb-1">Minutos Jugados</label>
+                            <input type="number" id="minutos" class="w-full bg-slate-700 border border-slate-600 rounded p-2 text-white focus:outline-none focus:border-blue-500" placeholder="Ej. 2500" required>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm text-slate-400 mb-1">Goles</label>
+                            <input type="number" id="goles" class="w-full bg-slate-700 border border-slate-600 rounded p-2 text-white focus:outline-none focus:border-blue-500" placeholder="Ej. 15" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-slate-400 mb-1">Asistencias</label>
+                            <input type="number" id="asistencias" class="w-full bg-slate-700 border border-slate-600 rounded p-2 text-white focus:outline-none focus:border-blue-500" placeholder="Ej. 8" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-4 rounded transition duration-200 mt-4">
+                        Calcular Valor Justo
+                    </button>
+                </form>
+            </div>
+
+            <!-- Panel Derecho: Resultados -->
+            <div class="bg-slate-800 p-6 rounded-lg shadow-lg border border-slate-700 flex flex-col justify-center items-center text-center">
+                <h2 class="text-xl font-semibold mb-4 text-slate-300">Valoración Estimada</h2>
+                
+                <div id="loading" class="hidden text-blue-400 mb-4">Calculando en el servidor...</div>
+                
+                <div id="resultado-container" class="hidden">
+                    <p class="text-5xl font-bold text-emerald-400 mb-2">€<span id="precio-final">0</span></p>
+                    <p class="text-sm text-slate-400">Precio sugerido según rendimiento</p>
+                </div>
+
+                <div id="estado-inicial" class="text-slate-500 italic">
+                    Ingresa los datos del jugador y presiona calcular.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

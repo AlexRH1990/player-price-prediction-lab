@@ -1,4 +1,5 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 import joblib
 import pandas as pd
@@ -38,3 +39,7 @@ def predecir_valor(jugador: DatosJugador):
         "datos_recibidos": jugador.dict(),
         "valor_justo_estimado_eur": float(precio_estimado)
     }
+
+# ¡LA NUEVA MAGIA! 
+# Montamos la carpeta 'frontend' para que FastAPI sirva tu sitio web
+app.mount("/", StaticFiles(directory="frontend", html=True), name="frontend")
