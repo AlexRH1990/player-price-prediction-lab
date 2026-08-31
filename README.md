@@ -1,6 +1,6 @@
 # ⚽ ML Scout: Detector de Gangas (Player Price Prediction)
 
-![ML Scout Interface](assets/image_6f0e89.png)
+![ML Scout Interface](assets/App.jpg)
 
 > "Trabajaremos con un dataset alojado en un bucket, este será traido de Kaggle directamente alojado en el bucket. El objetivo es realizar un análisis exploratorio de los datos del dataset (datos de rendimiento y de partidos de jugadores de futbol), para generar mediante regresiones lineales un algoritmo que prediga el precio de un jugador según sus números..."
 
