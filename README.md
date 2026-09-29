@@ -1,4 +1,4 @@
-cat << 'EOF' > README.md
+
 # ⚽ ML Scout: Performance-Adjusted Player Valuation
 
 ![ML Scout Interface](assets/App.jpg)
